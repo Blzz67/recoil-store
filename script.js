@@ -12,18 +12,9 @@ function toggleFAQ(element) {
     element.classList.toggle('active');
 }
 
-// ============ PAYPAL INTEGRATION ============
-// REPLACE WITH YOUR PAYPAL EMAIL
-const PAYPAL_EMAIL = 'sophieesser19@gmail.com';
-const PRICE = '10.00';
-const CURRENCY = 'EUR';
-const ITEM_NAME = 'Recoil Scripts - Full Access';
-const SUCCESS_URL = 'https://your-domain.com/success.html';
-const CANCEL_URL = 'https://your-domain.com/cancel.html';
-
+// ============ FREE ACCESS - NO PAYPAL ============
 function startPayment() {
     window.location.href = 'success.html';
-}
 }
 
 // ============ SCROLL ANIMATION ============
