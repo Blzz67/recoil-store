@@ -22,17 +22,8 @@ const SUCCESS_URL = 'https://your-domain.com/success.html';
 const CANCEL_URL = 'https://your-domain.com/cancel.html';
 
 function startPayment() {
-    const paypalUrl = 'https://www.paypal.com/cgi-bin/webscr?' +
-        'cmd=_xclick' +
-        '&business=' + encodeURIComponent(PAYPAL_EMAIL) +
-        '&item_name=' + encodeURIComponent(ITEM_NAME) +
-        '&amount=' + PRICE +
-        '&currency_code=' + CURRENCY +
-        '&return=' + encodeURIComponent(SUCCESS_URL) +
-        '&cancel_return=' + encodeURIComponent(CANCEL_URL) +
-        '&no_shipping=1';
-    
-    window.location.href = paypalUrl;
+    window.location.href = 'success.html';
+}
 }
 
 // ============ SCROLL ANIMATION ============
