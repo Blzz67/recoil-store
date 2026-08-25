@@ -12,10 +12,10 @@
     
     <div class="weapons-container">
         <h1 class="weapons-title">YOUR <span class="accent">SCRIPTS</span></h1>
-        <p class="weapons-subtitle">Click on a weapon to view and download the script</p>
+        <p class="weapons-subtitle">Select a weapon to view and download the script</p>
         
         <div class="weapons-grid" id="weaponsGrid">
-            <!-- Weapons will be added here by JavaScript -->
+            <!-- Weapon boxes will be added here by JavaScript -->
         </div>
     </div>
 
@@ -31,37 +31,35 @@
 
     <script src="script.js"></script>
     <script>
-        // Weapon data - ADD YOUR 12 WEAPONS HERE
+        // Weapon data - CHANGE THESE TO MATCH YOUR EXACT FILE NAMES
         const weapons = [
-            { name: "F2", image: "images/f2.jpg", script: "download/f2.ahk" },
-            { name: "SMG-11", image: "images/smg11.jpg", script: "download/smg11.ahk" },
-            { name: "R4-C", image: "images/r4c.jpg", script: "download/r4c.ahk" },
-            { name: "AK-12", image: "images/ak12.jpg", script: "download/ak12.ahk" },
-            { name: "M762", image: "images/m762.jpg", script: "download/m762.ahk" },
-            { name: "C8-SFW", image: "images/c8sfw.jpg", script: "download/c8sfw.ahk" },
-            { name: "MP5", image: "images/mp5.jpg", script: "download/mp5.ahk" },
-            { name: "P90", image: "images/p90.jpg", script: "download/p90.ahk" },
-            { name: "Vector .45", image: "images/vector.jpg", script: "download/vector.ahk" },
-            { name: "M4", image: "images/m4.jpg", script: "download/m4.ahk" },
-            { name: "G36C", image: "images/g36c.jpg", script: "download/g36c.ahk" },
-            { name: "LMG-E", image: "images/lmge.jpg", script: "download/lmge.ahk" }
+            { name: "F2", script: "download/f2.ahk" },
+            { name: "SMG-11", script: "download/smg11.ahk" },
+            { name: "R4-C", script: "download/r4c.ahk" },
+            { name: "AK-12", script: "download/ak12.ahk" },
+            { name: "M762", script: "download/m762.ahk" },
+            { name: "C8-SFW", script: "download/c8sfw.ahk" },
+            { name: "MP5", script: "download/mp5.ahk" },
+            { name: "P90", script: "download/p90.ahk" },
+            { name: "Vector .45", script: "download/vector.ahk" },
+            { name: "M4", script: "download/m4.ahk" },
+            { name: "G36C", script: "download/g36c.ahk" },
+            { name: "LMG-E", script: "download/lmge.ahk" }
         ];
 
-        // Create weapon cards
+        // Create weapon boxes
         const grid = document.getElementById('weaponsGrid');
         
         weapons.forEach(weapon => {
-            const card = document.createElement('div');
-            card.className = 'weapon-card';
-            card.onclick = () => openModal(weapon);
+            const box = document.createElement('div');
+            box.className = 'weapon-box';
+            box.onclick = () => openModal(weapon);
             
-            card.innerHTML = `
-                <img src="${weapon.image}" alt="${weapon.name}" class="weapon-image" onerror="this.src='https://via.placeholder.com/300x200?text=${weapon.name}'">
-                <div class="weapon-name">${weapon.name}</div>
-                <div class="weapon-hover">CLICK TO VIEW</div>
+            box.innerHTML = `
+                <span class="weapon-box-name">${weapon.name}</span>
             `;
             
-            grid.appendChild(card);
+            grid.appendChild(box);
         });
 
         // Modal functions
@@ -71,7 +69,6 @@
             document.getElementById('modalDownloadBtn').href = weapon.script;
             document.getElementById('modalDownloadBtn').setAttribute('download', weapon.name + '_recoil.ahk');
             
-            // Try to load script content
             fetch(weapon.script)
                 .then(response => response.text())
                 .then(data => {
@@ -86,7 +83,6 @@
             document.getElementById('scriptModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('scriptModal');
             if (event.target === modal) {
