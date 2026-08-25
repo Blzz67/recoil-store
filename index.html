@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOIL SCRIPTS — Premium R6 Tools</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particle-bg"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">RECOIL<span class="accent">SCRIPTS</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+                <button class="nav-cta" onclick="scrollToPricing()">Get Access</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="glitch" data-text="DOMINATE">DOMINATE</span><br>
+                <span class="hero-subtitle">RAINBOW SIX SIEGE</span>
+            </h1>
+            <p class="hero-description">
+                Premium recoil control scripts engineered for competitive play. 
+                Laser accuracy. Zero detection. Total dominance.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToPricing()">
+                    GET ACCESS — €10
+                </button>
+                <button class="btn-secondary" onclick="scrollToFeatures()">
+                    LEARN MORE
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Active Users</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Updates</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Undetected</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">WHY OUR <span class="accent">SCRIPTS</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>LASER ACCURACY</h3>
+                <p>Perfect recoil patterns for every weapon. Zero spread. Zero drift.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>UNDETECTED</h3>
+                <p>External scripts that bypass all anti-cheat systems. Play with confidence.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>INSTANT DELIVERY</h3>
+                <p>Get access immediately after payment. No waiting. No delays.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>LIFETIME UPDATES</h3>
+                <p>Every script updated for every game patch. Free forever.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>DISCORD SUPPORT</h3>
+                <p>Private Discord community with 24/7 support from our team.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>ALL WEAPONS</h3>
+                <p>Scripts for every gun in the game. F2, SMG-11, R4-C, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">GET <span class="accent">ACCESS</span></h2>
+        <div class="pricing-card">
+            <div class="pricing-badge">MOST POPULAR</div>
+            <h3 class="pricing-title">FULL ACCESS</h3>
+            <div class="pricing-price">€10</div>
+            <div class="pricing-period">one-time payment</div>
+            <ul class="pricing-features">
+                <li>✓ All recoil scripts</li>
+                <li>✓ Every weapon included</li>
+                <li>✓ Lifetime updates</li>
+                <li>✓ Discord access</li>
+                <li>✓ Setup guide included</li>
+                <li>✓ Instant delivery</li>
+            </ul>
+            <button class="btn-buy" onclick="startPayment()">
+                <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal" class="paypal-logo">
+                BUY NOW
+            </button>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2 class="section-title">FREQUENTLY <span class="accent">ASKED</span></h2>
+        <div class="faq-list">
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">How do I get the scripts after payment?</div>
+                <div class="faq-answer">After successful payment, you'll be instantly redirected to the download page. You'll also receive an email with your download link and setup guide.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Is this detectable?</div>
+                <div class="faq-answer">Our scripts run externally and don't modify game files. They remain undetected by BattleEye and other anti-cheat systems.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">How often are scripts updated?</div>
+                <div class="faq-answer">Every time Rainbow Six Siege gets a new patch or update, we update our scripts within 24-48 hours.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Do I need special software?</div>
+                <div class="faq-answer">Our scripts work with AutoHotkey, Logitech G Hub, or Razer Synapse. A detailed setup guide is included.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 RECOILSCRIPTS. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
