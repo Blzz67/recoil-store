@@ -3,61 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Granted — RECOILSCRIPTS</title>
+    <title>Download Scripts — RECOILSCRIPTS</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="particle-bg"></div>
     
-    <div class="download-container">
-        <div class="download-card">
-            <div class="success-icon">✅</div>
-            <h1 class="download-title">PAYMENT <span class="accent">SUCCESSFUL</span></h1>
-            <p class="download-message">Your access has been granted. Download your files below.</p>
-            
-            <div class="download-section">
-                <h3>YOUR FILES</h3>
-                
-                <div class="download-item">
-                    <div class="download-info">
-                        <span class="download-icon">📦</span>
-                        <div>
-                            <h4>Scripts Package</h4>
-                            <p>All recoil scripts for R6</p>
-                        </div>
-                    </div>
-                    <a href="/download/scripts.zip" class="btn-download" download>DOWNLOAD</a>
-                </div>
-                
-                <div class="download-item">
-                    <div class="download-info">
-                        <span class="download-icon">📖</span>
-                        <div>
-                            <h4>Setup Guide</h4>
-                            <p>Step-by-step installation instructions</p>
-                        </div>
-                    </div>
-                    <a href="/download/setup.txt" class="btn-download" download>DOWNLOAD</a>
-                </div>
-                
-                <div class="download-item">
-                    <div class="download-info">
-                        <span class="download-icon">💬</span>
-                        <div>
-                            <h4>Discord Access</h4>
-                            <p>Private Discord invite link</p>
-                        </div>
-                    </div>
-                    <a href="/download/discord.txt" class="btn-download" download>DOWNLOAD</a>
-                </div>
-            </div>
-            
-            <div class="download-note">
-                <p>⚠️ Save these files. The download link expires after 24 hours.</p>
-                <p>Check your email for permanent access.</p>
-            </div>
+    <div class="weapons-container">
+        <h1 class="weapons-title">YOUR <span class="accent">SCRIPTS</span></h1>
+        <p class="weapons-subtitle">Click on a weapon to view and download the script</p>
+        
+        <div class="weapons-grid" id="weaponsGrid">
+            <!-- Weapons will be added here by JavaScript -->
         </div>
     </div>
+
+    <!-- Script viewer modal -->
+    <div class="modal" id="scriptModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalWeaponName"></h2>
+            <div class="script-preview" id="scriptPreview"></div>
+            <a id="modalDownloadBtn" class="btn-download-large" download>DOWNLOAD SCRIPT</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Weapon data - ADD YOUR 12 WEAPONS HERE
+        const weapons = [
+            { name: "F2", image: "images/f2.jpg", script: "download/f2.ahk" },
+            { name: "SMG-11", image: "images/smg11.jpg", script: "download/smg11.ahk" },
+            { name: "R4-C", image: "images/r4c.jpg", script: "download/r4c.ahk" },
+            { name: "AK-12", image: "images/ak12.jpg", script: "download/ak12.ahk" },
+            { name: "M762", image: "images/m762.jpg", script: "download/m762.ahk" },
+            { name: "C8-SFW", image: "images/c8sfw.jpg", script: "download/c8sfw.ahk" },
+            { name: "MP5", image: "images/mp5.jpg", script: "download/mp5.ahk" },
+            { name: "P90", image: "images/p90.jpg", script: "download/p90.ahk" },
+            { name: "Vector .45", image: "images/vector.jpg", script: "download/vector.ahk" },
+            { name: "M4", image: "images/m4.jpg", script: "download/m4.ahk" },
+            { name: "G36C", image: "images/g36c.jpg", script: "download/g36c.ahk" },
+            { name: "LMG-E", image: "images/lmge.jpg", script: "download/lmge.ahk" }
+        ];
+
+        // Create weapon cards
+        const grid = document.getElementById('weaponsGrid');
+        
+        weapons.forEach(weapon => {
+            const card = document.createElement('div');
+            card.className = 'weapon-card';
+            card.onclick = () => openModal(weapon);
+            
+            card.innerHTML = `
+                <img src="${weapon.image}" alt="${weapon.name}" class="weapon-image" onerror="this.src='https://via.placeholder.com/300x200?text=${weapon.name}'">
+                <div class="weapon-name">${weapon.name}</div>
+                <div class="weapon-hover">CLICK TO VIEW</div>
+            `;
+            
+            grid.appendChild(card);
+        });
+
+        // Modal functions
+        function openModal(weapon) {
+            document.getElementById('scriptModal').style.display = 'flex';
+            document.getElementById('modalWeaponName').textContent = weapon.name + ' - Recoil Script';
+            document.getElementById('modalDownloadBtn').href = weapon.script;
+            document.getElementById('modalDownloadBtn').setAttribute('download', weapon.name + '_recoil.ahk');
+            
+            // Try to load script content
+            fetch(weapon.script)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('scriptPreview').textContent = data;
+                })
+                .catch(() => {
+                    document.getElementById('scriptPreview').textContent = 'Script will be downloaded when you click the button below.';
+                });
+        }
+
+        function closeModal() {
+            document.getElementById('scriptModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('scriptModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
